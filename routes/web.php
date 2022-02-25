@@ -27,7 +27,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     # Post resource controllers
-    Route::resource('posts', 'PostController');
+    Route::resource('posts', PostController::class);
 
     # Comments routes
     Route::group(['prefix' => '/comments', 'as' => 'comments.'], function() {
