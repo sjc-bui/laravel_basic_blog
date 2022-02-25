@@ -15,7 +15,7 @@ class ReplyController extends Controller
      */
     public function store(Comment $comment) {
         $this->validate(request(), [
-            'new_reply' => 'required|min:1|max:255'
+            'new_reply' => 'required|min:3|max:255'
         ]);
 
         $comment->replies()->create([

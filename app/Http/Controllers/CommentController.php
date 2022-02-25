@@ -15,7 +15,7 @@ class CommentController extends Controller
      */
     public function store(Post $post) {
         $this->validate(request(), [
-            'new_comment' => 'required|min:1|max:255'
+            'new_comment' => 'required|min:3|max:255'
         ]);
 
         $post->comments()->create([

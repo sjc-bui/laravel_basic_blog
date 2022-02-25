@@ -20,8 +20,8 @@ class PostController extends Controller
      */
     public function store(Request $request) {
         $this->validate(request(), [
-            'title' => 'required|min:1|max:255',
-            'body'  => 'required|min:1|max:300'
+            'title' => 'required|min:3|max:255',
+            'body'  => 'required|min:3|max:300'
         ]);
 
         // store data using create() method.
@@ -57,8 +57,8 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post) {
         $this->validate(request(), [
-            'title' => 'required|min:1|max:255',
-            'body'  => 'required|min:1|max:300'
+            'title' => 'required|min:3|max:255',
+            'body'  => 'required|min:3|max:300'
         ]);
 
         $post->update([
