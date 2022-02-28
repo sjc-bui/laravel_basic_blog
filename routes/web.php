@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,5 +40,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['prefix' => '/replies', 'as' => 'replies.'], function() {
         // Store reply
         Route::post('/{comment}', [ReplyController::class, 'store'])->name('store');
+    });
+
+    # Categories routes
+    Route::group(['prefix' => '/categories', 'as' => 'categories.'], function() {
+        Route::get('/', [CategoryController::class, 'index'])->name('home');
+        Route::post('/', [CategoryController::class, 'store'])->name('store');
     });
 });

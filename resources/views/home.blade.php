@@ -7,7 +7,10 @@
 
     {{-- create new post --}}
     <a href="{{ route('posts.create') }}" class="btn btn-link float-right">
-        Create new post
+        New post
+    </a>
+    <a href="{{ route('categories.home') }}" class="btn btn-link float-right">
+        Categories
     </a>
 </div>
 
@@ -18,11 +21,16 @@
             <h4 class="card-title">
                 <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
             </h4>
-            <div class="post-tags mb-2">
+            <div class="post-tags mb-1">
                 @foreach($post->tags as $tag)
                     <span class="badge badge-info">{{$tag->name}}</span>
                 @endforeach
             </div>
+            @if (isset($post->category))
+                <small class="text-muted">
+                    <a href="#">{{ $post->category->name }}</a>
+                </small>
+            @endif
 
             <p class="card-text">
                 {{-- post owner --}}

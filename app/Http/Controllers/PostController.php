@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -11,7 +12,8 @@ class PostController extends Controller
      * Show form for creating a new post.
      */
     public function create() {
-        return view('posts.create');
+        $categories = Category::all();
+        return view('posts.create')->withCategories($categories);
     }
 
     /**
@@ -23,6 +25,7 @@ class PostController extends Controller
             'title' => 'required|min:3|max:255',
             'body'  => 'required|min:3|max:300',
             'tags'  => 'required|min:3|max:50',
+            'category_id' => 'required|integer'
         ]);
 
         // store data using create() method.
@@ -31,7 +34,8 @@ class PostController extends Controller
             'user_id' => auth()->id(),
             'title' => $request->title,
             'body' => $request->body,
-            'tags' => $request->tags
+            'tags' => $request->tags,
+            'category_id' => $request->category_id
         ]);
         $post->tag($tag);
 

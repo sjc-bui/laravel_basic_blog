@@ -13,7 +13,7 @@ class Post extends Model
 
     protected $table = 'posts';
 
-    protected $fillable = ['user_id', 'title', 'body', 'tags'];
+    protected $fillable = ['user_id', 'category_id', 'title', 'body', 'tags'];
 
     /** Relations */
     // One to many inverse relationship with User model
@@ -24,6 +24,10 @@ class Post extends Model
     // One to many relationship with Comment model
     public function comments() {
         return $this->hasMany(Comment::class, 'post_id');
+    }
+
+    public function category() {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     /**
