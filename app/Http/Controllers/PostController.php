@@ -21,7 +21,7 @@ class PostController extends Controller
      * 
      */
     public function store(Request $request) {
-        $this->validate(request(), [
+        $this->validate($request, [
             'title' => 'required|min:3|max:255',
             'body'  => 'required|min:3|max:300',
             'tags'  => 'required|min:3|max:50',
@@ -75,7 +75,7 @@ class PostController extends Controller
      * 
      */
     public function update(Request $request, Post $post) {
-        $this->validate(request(), [
+        $this->validate($request, [
             'title' => 'required|min:3|max:255',
             'body'  => 'required|min:3|max:300',
             'category_id' => 'required|integer'
