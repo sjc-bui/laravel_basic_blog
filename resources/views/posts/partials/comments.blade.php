@@ -1,4 +1,4 @@
-<h4 class="card-title">Comments</h4>
+<h4 class="card-title">{{ count($post->comments) }} Comments</h4>
 
 {{-- Comment form --}}
 @include('posts.partials.add_comment')
