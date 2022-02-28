@@ -63,7 +63,11 @@ class PostController extends Controller
      * 
      */
     public function edit(Post $post) {
-        return view('posts.edit')->with('post', $post);
+        $categories = Category::all();
+        return view('posts.edit')->with([
+            'post' => $post,
+            'categories' => $categories
+        ]);
     }
 
     /**
@@ -73,12 +77,14 @@ class PostController extends Controller
     public function update(Request $request, Post $post) {
         $this->validate(request(), [
             'title' => 'required|min:3|max:255',
-            'body'  => 'required|min:3|max:300'
+            'body'  => 'required|min:3|max:300',
+            'category_id' => 'required|integer'
         ]);
 
         $post->update([
             'title' => $request->title,
             'body'  => $request->body,
+            'category_id' => $request->category_id
         ]);
 
         return redirect($post->path());
