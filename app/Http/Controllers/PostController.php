@@ -21,15 +21,19 @@ class PostController extends Controller
     public function store(Request $request) {
         $this->validate(request(), [
             'title' => 'required|min:3|max:255',
-            'body'  => 'required|min:3|max:300'
+            'body'  => 'required|min:3|max:300',
+            'tags'  => 'required|min:3|max:50',
         ]);
 
         // store data using create() method.
+        $tag = explode(', ', $request->tags);
         $post = Post::create([
             'user_id' => auth()->id(),
             'title' => $request->title,
-            'body' => $request->body
+            'body' => $request->body,
+            'tags' => $request->tags
         ]);
+        $post->tag($tag);
 
         // redirect to show post url.
         return redirect($post->path());

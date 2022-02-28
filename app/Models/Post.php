@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Conner\Tagging\Taggable;
 
 class Post extends Model
 {
     use HasFactory;
+    use Taggable;
 
     protected $table = 'posts';
 
-    protected $fillable = ['user_id', 'title', 'body'];
+    protected $fillable = ['user_id', 'title', 'body', 'tags'];
 
     /** Relations */
     // One to many inverse relationship with User model

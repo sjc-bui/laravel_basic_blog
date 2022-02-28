@@ -14,6 +14,15 @@
         <p class="card-text">
             {{ $post->body }}
         </p>
+
+        {{-- post tags --}}
+        <div class="post-tags mb-4">
+            <strong>Tags : </strong>
+            @foreach($post->tags as $tag)
+                <span class="badge badge-info">{{$tag->name}}</span>
+            @endforeach
+        </div>
+
         <small class="text-muted">
             @if (isset($prev))
                 Previous: <a href="{{ route('posts.show', $prev->id) }}">{{ $prev->title }}</a>
@@ -23,6 +32,7 @@
             @endif
         </small>
         <hr>
+
         {{-- post comments --}}
         @include('posts.partials.comments')
     </div>

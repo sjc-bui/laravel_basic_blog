@@ -19,6 +19,14 @@
         @endif
     </div>
 
+    <div class="form-group">
+        <label for="tags">Post tags</label>
+        <input type="text" name="tags" id="tags" class="form-control" placeholder="tag1, tag2, tag3" required value="{{ old('tags') }}">
+        @if ($errors->has('tags'))
+            <small class="text-danger">{{ $errors->first('tags') }}</small>
+        @endif
+    </div>
+
     {{-- submit button --}}
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save post</button>
