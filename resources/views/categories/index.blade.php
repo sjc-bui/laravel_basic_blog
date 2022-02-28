@@ -23,6 +23,11 @@
                         </tbody>
                     </table>
                     <hr>
+                    @if (Session::has('success'))
+                        <div class="alert alert-success">
+                            <p>{{ Session::get('success') }}</p>
+                        </div>
+                    @endif
                     <form class="mt-2 mb-4" action="{{ route('categories.store') }}" method="post">
                         @csrf
                         <div class="input-group">

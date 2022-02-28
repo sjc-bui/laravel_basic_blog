@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -25,7 +26,7 @@ class CategoryController extends Controller
             'name' => $request->name
         ]);
 
-        // Session::flash('success', 'New category has been created.');
+        Session::flash('success', 'New category has been created.');
         return redirect(route('categories.home'));
     }
 
