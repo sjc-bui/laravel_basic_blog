@@ -16,8 +16,7 @@
         </p>
 
         {{-- post tags --}}
-        <div class="post-tags mb-4">
-            <strong>Tags : </strong>
+        <div class="post-tags mb-2">
             @foreach($post->tags as $tag)
                 <span class="badge badge-info">{{$tag->name}}</span>
             @endforeach

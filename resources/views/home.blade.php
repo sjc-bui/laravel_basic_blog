@@ -18,6 +18,11 @@
             <h4 class="card-title">
                 <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
             </h4>
+            <div class="post-tags mb-2">
+                @foreach($post->tags as $tag)
+                    <span class="badge badge-info">{{$tag->name}}</span>
+                @endforeach
+            </div>
 
             <p class="card-text">
                 {{-- post owner --}}
